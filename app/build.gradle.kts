@@ -70,4 +70,23 @@ dependencies {
     // RxJava + ViewModel (auto-dispose alternative)
     implementation(libs.autodispose.android)
     implementation(libs.autodispose.androidx.lifecycle)
+
+
+    // ── Kotlin Coroutines
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
+
+    // Lifecycle + ViewModel scopes
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx.v283)
+
+    // Retrofit suspend support
+    implementation(libs.retrofit)
+
+    // Room + Coroutines/Flow
+    implementation(libs.androidx.room.ktx)
+
+    // Testing
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.rxjava.v318)
 }
