@@ -55,4 +55,19 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     debugImplementation(libs.androidx.compose.ui.tooling)
+
+    // ── RxJava 3
+    implementation(libs.rxjava)
+    implementation(libs.rxandroid)
+    implementation(libs.rxkotlin)
+
+    // Retrofit + RxJava adapter
+    implementation(libs.adapter.rxjava3)
+
+    // Room + RxJava
+    implementation(libs.androidx.room.rxjava3)
+
+    // RxJava + ViewModel (auto-dispose alternative)
+    implementation(libs.autodispose.android)
+    implementation(libs.autodispose.androidx.lifecycle)
 }
