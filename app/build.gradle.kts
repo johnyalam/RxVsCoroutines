@@ -1,14 +1,20 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.jlleitschuh.ktlint)
+}
+
+ktlint {
+    version.set(libs.versions.ktlint)
 }
 
 android {
     namespace = "fi.developer.rxvscoroutines"
     compileSdk {
-        version = release(36) {
-            minorApiLevel = 1
-        }
+        version =
+            release(36) {
+                minorApiLevel = 1
+            }
     }
 
     defaultConfig {
@@ -26,7 +32,7 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
@@ -36,6 +42,12 @@ android {
     }
     buildFeatures {
         compose = true
+    }
+    lint {
+        checkDependencies = true
+        checkGeneratedSources = true
+        baseline = file("lint-baseline.xml")
+        lintConfig = file("lint.xml")
     }
 }
 
@@ -68,9 +80,9 @@ dependencies {
     implementation(libs.androidx.room.rxjava3)
 
     // RxJava + ViewModel (auto-dispose alternative)
+    implementation(libs.autodispose)
     implementation(libs.autodispose.android)
     implementation(libs.autodispose.androidx.lifecycle)
-
 
     // ── Kotlin Coroutines
     implementation(libs.kotlinx.coroutines.core)
