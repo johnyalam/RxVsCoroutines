@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import fi.developer.rxvscoroutines.presentation.ui.screen.HomeScreen
 import fi.developer.rxvscoroutines.presentation.ui.theme.RxVsCoroutinesTheme
+import fi.developer.rxvscoroutines.presentation.ui.viewmodel.HomeScreenViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,7 +23,7 @@ class MainActivity : ComponentActivity() {
             RxVsCoroutinesTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Box(Modifier.padding(innerPadding)) {
-                        HomeScreen()
+                        HomeScreen(HomeScreenViewModel())
                     }
                 }
             }
@@ -34,6 +35,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun GreetingPreview() {
     RxVsCoroutinesTheme {
-        HomeScreen()
+        HomeScreen(HomeScreenViewModel())
     }
 }
