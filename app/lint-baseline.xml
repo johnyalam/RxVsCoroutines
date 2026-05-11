@@ -8,7 +8,7 @@
         errorLine2="        ~~~~~~~~~~~~~~">
         <location
             file="build.gradle.kts"
-            line="22"
+            line="25"
             column="9"/>
     </issue>
 
@@ -37,23 +37,12 @@
     <issue
         id="GradleDependency"
         message="A newer version of `compileSdk` than 36 is available: 37"
-        errorLine1="        version = release(36) {"
-        errorLine2="                  ^">
+        errorLine1="            release(36) {"
+        errorLine2="            ^">
         <location
             file="build.gradle.kts"
-            line="14"
-            column="19"/>
-    </issue>
-
-    <issue
-        id="NewerVersionAvailable"
-        message="A newer version of org.jlleitschuh.gradle.ktlint than 12.1.2 is available: 14.2.0"
-        errorLine1="jlleitschuhKtlint = &quot;12.1.2&quot;"
-        errorLine2="                    ~~~~~~~~">
-        <location
-            file="../gradle/libs.versions.toml"
-            line="24"
-            column="21"/>
+            line="17"
+            column="13"/>
     </issue>
 
     <issue
@@ -63,7 +52,7 @@
         errorLine2="                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="../gradle/libs.versions.toml"
-            line="30"
+            line="32"
             column="40"/>
     </issue>
 
@@ -74,7 +63,7 @@
         errorLine2="                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="../gradle/libs.versions.toml"
-            line="40"
+            line="44"
             column="35"/>
     </issue>
 
@@ -85,7 +74,7 @@
         errorLine2="          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="../gradle/libs.versions.toml"
-            line="55"
+            line="59"
             column="11"/>
     </issue>
 
@@ -96,7 +85,7 @@
         errorLine2="               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="../gradle/libs.versions.toml"
-            line="56"
+            line="60"
             column="16"/>
     </issue>
 

@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.jlleitschuh.ktlint)
+    alias(libs.plugins.ksp)
+    id("com.google.dagger.hilt.android")
 }
 
 ktlint {
@@ -101,4 +103,7 @@ dependencies {
     // Testing
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.rxjava.v318)
+
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
 }
