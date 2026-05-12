@@ -1,7 +1,7 @@
 package fi.developer.rxvscoroutines.domain.repository
 
-import fi.developer.rxvscoroutines.domain.model.CoinResponseItem
+import fi.developer.rxvscoroutines.domain.model.CoinItem
 
 interface CoinRepository {
-    suspend fun getCoins(): List<CoinResponseItem>
+    suspend fun getCoins(): List<CoinItem>
 }

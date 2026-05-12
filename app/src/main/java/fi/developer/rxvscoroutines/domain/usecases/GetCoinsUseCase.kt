@@ -1,7 +1,7 @@
 package fi.developer.rxvscoroutines.domain.usecases
 
 import fi.developer.rxvscoroutines.core.Resource
-import fi.developer.rxvscoroutines.domain.model.CoinResponseItem
+import fi.developer.rxvscoroutines.domain.model.CoinItem
 import fi.developer.rxvscoroutines.domain.repository.CoinRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -13,7 +13,7 @@ class GetCoinsUseCase
     constructor(
         private val coinRepository: CoinRepository,
     ) {
-        operator fun invoke(): Flow<Resource<List<CoinResponseItem>>> =
+        operator fun invoke(): Flow<Resource<List<CoinItem>>> =
             flow {
                 try {
                     emit(Resource.Loading())

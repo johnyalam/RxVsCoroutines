@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class CoinResponseItem(
+data class CoinItem(
     @SerialName("id") val id: String,
     @SerialName("is_active") val isActive: Boolean,
     @SerialName("is_new") val isNew: Boolean,

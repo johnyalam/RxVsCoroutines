@@ -1,7 +1,7 @@
 package fi.developer.rxvscoroutines.domain.repository
 
 import fi.developer.rxvscoroutines.data.remote.NetworkApi
-import fi.developer.rxvscoroutines.domain.model.CoinResponseItem
+import fi.developer.rxvscoroutines.domain.model.CoinItem
 import javax.inject.Inject
 
 class CoinRepositoryImpl
@@ -9,5 +9,5 @@ class CoinRepositoryImpl
     constructor(
         val networkApi: NetworkApi,
     ) : CoinRepository {
-        override suspend fun getCoins(): List<CoinResponseItem> = networkApi.getCoins()
+        override suspend fun getCoins(): List<CoinItem> = networkApi.getCoins()
     }
