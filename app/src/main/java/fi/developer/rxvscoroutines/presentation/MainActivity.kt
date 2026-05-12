@@ -14,7 +14,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import dagger.hilt.android.AndroidEntryPoint
 import fi.developer.rxvscoroutines.presentation.ui.screen.HomeScreen
 import fi.developer.rxvscoroutines.presentation.ui.theme.RxVsCoroutinesTheme
-import fi.developer.rxvscoroutines.presentation.ui.viewmodel.HomeScreenViewModel
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -25,7 +24,7 @@ class MainActivity : ComponentActivity() {
             RxVsCoroutinesTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Box(Modifier.padding(innerPadding)) {
-                        HomeScreen(HomeScreenViewModel())
+                        HomeScreen()
                     }
                 }
             }
@@ -37,6 +36,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun GreetingPreview() {
     RxVsCoroutinesTheme {
-        HomeScreen(HomeScreenViewModel())
+        HomeScreen()
     }
 }
