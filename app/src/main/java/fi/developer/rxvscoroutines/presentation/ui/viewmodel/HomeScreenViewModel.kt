@@ -3,64 +3,41 @@ package fi.developer.rxvscoroutines.presentation.ui.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.core.Observable
-import io.reactivex.rxjava3.disposables.CompositeDisposable
-import kotlinx.coroutines.delay
+import fi.developer.rxvscoroutines.core.Resource
+import fi.developer.rxvscoroutines.domain.usecases.GetCoinsUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.launch
-import java.util.concurrent.TimeUnit
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeScreenViewModel
     @Inject
-    constructor() : ViewModel() {
-        private val disposables = CompositeDisposable()
-
-        // Coroutine State
-        private val _number = MutableStateFlow(0)
-        val number: StateFlow<Int> = _number
-
-        // RxJava State
-        private val _numberRxJava = MutableStateFlow(0)
-        val numberRxJava: StateFlow<Int> = _numberRxJava
+    constructor(
+        private val getCoinsUseCase: GetCoinsUseCase,
+    ) : ViewModel() {
+        private val _state = MutableStateFlow(CoinListState())
+        val state = _state.asStateFlow()
 
         init {
-            startRxJavaCounter()
-            startCoroutineCounter()
+            getCoinList()
         }
 
-        private fun startCoroutineCounter() {
-            viewModelScope.launch {
-                for (i in 1..100) {
-                    _number.value = i
-                    delay(DELAY_IN_MILLISECOND)
-                }
-            }
-        }
-
-        private fun startRxJavaCounter() {
-            val disposable =
-                Observable
-                    .interval(1, TimeUnit.SECONDS)
-                    .map {
-                        it.toInt() + 1
-                    }.take(DELAY_IN_MILLISECOND)
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe {
-                        _numberRxJava.value = it
+        fun getCoinList() {
+            getCoinsUseCase()
+                .onEach { result ->
+                    when (result) {
+                        is Resource.Success -> {
+                            _state.value = CoinListState(data = result.data ?: emptyList())
+                        }
+                        is Resource.Error -> {
+                            _state.value = CoinListState(error = result.message ?: "An unexpected error occured")
+                        }
+                        is Resource.Loading -> {
+                            _state.value = CoinListState(isLoading = true)
+                        }
                     }
-            disposables.add(disposable)
-        }
-
-        override fun onCleared() {
-            disposables.clear()
-            super.onCleared()
-        }
-
-        companion object {
-            const val DELAY_IN_MILLISECOND = 1000L
+                }.launchIn(viewModelScope)
         }
     }
