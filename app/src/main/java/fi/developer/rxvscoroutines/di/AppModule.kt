@@ -9,6 +9,7 @@ import fi.developer.rxvscoroutines.data.remote.NetworkApi
 import fi.developer.rxvscoroutines.domain.repository.CoinRepository
 import fi.developer.rxvscoroutines.domain.repository.CoinRepositoryImpl
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
@@ -22,6 +23,7 @@ object AppModule {
             Retrofit
                 .Builder()
                 .baseUrl(BASE_URL)
+                .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(NetworkApi::class.java)
