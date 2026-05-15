@@ -62,7 +62,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
-    testImplementation(libs.junit)
+
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -114,4 +114,19 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.logging.interceptor)
     implementation(libs.okhttp)
+
+    // Unit test
+    testImplementation(libs.junit)
+    testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.mockwebserver)
+    testImplementation(libs.turbine)
+    testImplementation(libs.kotlinx.coroutines.test.v190)
+
+    // Android Compose UI test
+    androidTestImplementation(libs.androidx.ui.test.junit4)
+    androidTestImplementation(libs.hilt.android.testing)
+    androidTestImplementation(libs.androidx.espresso.core.v361)
+    androidTestImplementation(libs.androidx.runner)
+    kspAndroidTest(libs.hilt.android.compiler)
+    debugImplementation(libs.androidx.ui.test.manifest)
 }
