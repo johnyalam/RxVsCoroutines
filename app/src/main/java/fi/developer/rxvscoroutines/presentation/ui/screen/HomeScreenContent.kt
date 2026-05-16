@@ -18,20 +18,21 @@ import fi.developer.rxvscoroutines.presentation.ui.viewmodel.CoinListState
 @Composable
 fun HomeScreenContent(
     state: CoinListState,
-    onItemClick: (CoinItem) -> Unit = {}
+    onItemClick: (CoinItem) -> Unit = {},
 ) {
     Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(10.dp)
+        modifier =
+            Modifier
+                .fillMaxSize()
+                .padding(10.dp),
     ) {
         LazyColumn(
-            modifier = Modifier.testTag("coin_list")
+            modifier = Modifier.testTag("coin_list"),
         ) {
             items(state.data) { coin ->
                 CoinItem(
                     coinItem = coin,
-                    onItemClick = onItemClick
+                    onItemClick = onItemClick,
                 )
             }
         }
@@ -42,7 +43,7 @@ fun HomeScreenContent(
 
         if (state.isLoading) {
             CircularProgressIndicator(
-                modifier = Modifier.testTag("loading")
+                modifier = Modifier.testTag("loading"),
             )
         }
     }
