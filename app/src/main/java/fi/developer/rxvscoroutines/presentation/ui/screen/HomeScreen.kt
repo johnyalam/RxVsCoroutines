@@ -13,6 +13,6 @@ fun HomeScreen(viewModel: HomeScreenViewModel = hiltViewModel()) {
         state = state.value,
         onItemClick = { coin ->
             Log.d("TAG", "Item Clicked ${coin.name}")
-        }
+        },
     )
 }
